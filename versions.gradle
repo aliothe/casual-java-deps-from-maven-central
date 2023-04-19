@@ -1,6 +1,6 @@
 //# -*- coding: utf-8-unix -*-
-def CASUAL_VERSION = '3.2.22'
-def CASUAL_CALLER_VERSION = '3.2.8'
+def CASUAL_VERSION = '2.2.20'
+def CASUAL_CALLER_VERSION = '2.2.8'
 def GSON_VERSION = '2.10.1'
 ext.libs = [
   casual_jca_app: "se.laz.casual:casual-jca-app:${CASUAL_VERSION}@ear",
