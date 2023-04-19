@@ -1,0 +1,17 @@
+//# -*- coding: utf-8-unix -*-
+def CASUAL_VERSION = '3.2.22'
+def CASUAL_CALLER_VERSION = '3.2.8'
+def GSON_VERSION = '2.10.1'
+ext.libs = [
+  casual_jca_app: "se.laz.casual:casual-jca-app:${CASUAL_VERSION}@ear",
+  casual_inbound_startup_app: "se.laz.casual:casual-inbound-startup-trigger-app:${CASUAL_VERSION}@ear",
+  casual_caller_app: "se.laz.casual:casual-caller-app:${CASUAL_CALLER_VERSION}@ear",
+  casual_api: "se.laz.casual:casual-api:${CASUAL_VERSION}",
+  casual_inbound_api: "se.laz.casual:casual-inbound-api:${CASUAL_VERSION}",
+  casual_inbound_handler_api: "se.laz.casual:casual-inbound-handler-api:${CASUAL_VERSION}",
+  casual_service_discovery_extension: "se.laz.casual:casual-service-discovery-extension:${CASUAL_VERSION}",
+  casual_fielded_annotations: "se.laz.casual:casual-fielded-annotations:${CASUAL_VERSION}",    
+  gson: "com.google.code.gson:gson:${GSON_VERSION}",
+]
+
+ext.CASUAL_VERSION = CASUAL_VERSION

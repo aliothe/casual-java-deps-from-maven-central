@@ -1,0 +1,14 @@
+[Bb]uild/
+.idea/
+*.iml
+*.class
+*.jar
+*.ear
+.gradle/
+# emacs #
+*~
+*.orig
+dist/
+out/
+gradle.properties
+secret.*

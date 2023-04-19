@@ -1,0 +1,62 @@
+//# -*- coding: utf-8-unix -*-
+apply from: 'versions.gradle'
+
+println "${group}_${rootProject.name}"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {url 'https://s01.oss.sonatype.org/content/repositories/snapshots' }
+}
+
+configurations{
+  application
+  lib
+  externalLib
+}
+
+task build{
+}
+
+build.dependsOn 'downloadApplication'
+
+task downloadApplication(type: Copy){
+  dependsOn 'downloadCasualLibs'
+  from configurations.application
+    into 'bin'
+    /*
+  rename { String fileName ->
+      fileName.replaceAll('(-[0-9]+(\\.[0-9]+)*(-beta)?|-alpha)','')
+  }*/
+}
+
+task downloadCasualLibs(type: Copy){
+  dependsOn 'downloadExternalLibs'
+  from configurations.lib
+    into 'lib'
+    /*
+  rename { String fileName ->
+    fileName.replaceAll('(-[0-9]+(\\.[0-9]+)*(-beta)?|-alpha)','')
+  }*/
+}
+
+task downloadExternalLibs(type: Copy){
+  from configurations.externalLib
+  into 'lib'
+}
+
+task clean(type: Delete){
+  delete 'bin'
+  delete 'lib'
+}
+
+dependencies{
+  application (libs.casual_jca_app)
+  application (libs.casual_inbound_startup_app)
+  application (libs.casual_caller_app)
+  lib (libs.casual_api) { transitive=false }
+  lib (libs.casual_inbound_handler_api) { transitive=false }
+  lib (libs.casual_service_discovery_extension) { transitive=false }
+  lib (libs.casual_fielded_annotations) { transitive=false }
+  externalLib (libs.gson) { transitive=false }
+}
